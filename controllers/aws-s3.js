@@ -50,10 +50,10 @@ module.exports = {
   deleteImages:(req,res)=>{
     try {
         s3.deleteObject({Bucket:process.env.BUCKET_NAME,Key:req.query.key}).promise().then(()=>{
-          res.status(200).json({message:'file deleted from s3'})
+          res.status(200).json({message:'file deleted from s3'});
         }).catch(()=>{
-          res.status(500).json({message:'error founded',err:err})
-        })
+          res.status(500).json({message:'error founded',err:err});
+        });
     } catch (error) {
       console.log(error,'error')
       res.status(500).json({message:'internal server error',error:error})
